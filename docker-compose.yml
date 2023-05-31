@@ -10,13 +10,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    environment:
-      MAINTAINER_EMAIL: ${MAINTAINER_EMAIL:-vanphandinh@outlook.com}
-      DOMAIN: ${DOMAIN:-minagraph.com}
     restart: always
     volumes:
       - "~/greenlock.d/:/usr/src/app/greenlock.d/"
     command: >
-      bash -c 'npx greenlock init --config-dir ./greenlock.d --maintainer-email $MAINTAINER_EMAIL && rm server.js
-      && npx greenlock add --subject ${DOMAIN} --altnames "$DOMAIN,www.$DOMAIN"
-      && npm start'
+      bash -c 'npm start'
