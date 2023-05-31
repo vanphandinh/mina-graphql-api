@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  mina-graphql-proxy:
+  mina-graphql-api:
     container_name: mina-graphql-api
     build:
       context: .
