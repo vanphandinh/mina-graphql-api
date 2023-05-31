@@ -2,8 +2,9 @@ import { buildHTTPExecutor } from '@graphql-tools/executor-http'
 import { schemaFromExecutor, wrapSchema } from '@graphql-tools/wrap'
 import express from 'express'
 import { createYoga } from 'graphql-yoga'
+import greenlock from 'greenlock-express'
 
-require("greenlock-express")
+greenlock
   .init({
     packageRoot: __dirname,
 
