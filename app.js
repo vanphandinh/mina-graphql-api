@@ -51,3 +51,8 @@ async function run() {
     .serve(app)
 }
 
+run().catch((e) => {
+  console.log(e)
+  process.exit(-1)
+})
+
