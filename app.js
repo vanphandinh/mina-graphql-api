@@ -8,27 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-greenlock
-  .init({
-    packageRoot: __dirname,
-
-    // contact for security and critical bug notices
-    maintainerEmail: 'vanphandinh@outlook.com',
-
-    // where to look for configuration
-    configDir: "./greenlock.d",
-
-    // whether or not to run at cloudscale
-    cluster: true,
-  })
-  // Serves on 80 and 443
-  // Get's SSL certificates magically!
-  .ready(httpsWorker)
-  .master(function() {
-    console.log("master");
-  });
-
-async function httpsWorker(glx) {
+async function run() {
   const executor = buildHTTPExecutor({
     endpoint: 'https://mina-mainnet-graphql.aurowallet.com/graphql'
   })
@@ -55,5 +35,19 @@ async function httpsWorker(glx) {
     res.status(301).redirect('/graphql');
   });
 
-  glx.serveApp(app);
+  greenlock
+    .init({
+      packageRoot: __dirname,
+
+      // contact for security and critical bug notices
+      maintainerEmail: 'vanphandinh@outlook.com',
+
+      // where to look for configuration
+      configDir: "./greenlock.d",
+
+      // whether or not to run at cloudscale
+      cluster: false,
+    })
+    .serve(app)
 }
+
