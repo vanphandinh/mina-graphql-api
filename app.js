@@ -3,6 +3,10 @@ import { schemaFromExecutor, wrapSchema } from '@graphql-tools/wrap'
 import express from 'express'
 import { createYoga } from 'graphql-yoga'
 import greenlock from 'greenlock-express'
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 greenlock
   .init({
