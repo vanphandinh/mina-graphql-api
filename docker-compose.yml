@@ -13,5 +13,3 @@ services:
     restart: always
     volumes:
       - "~/greenlock.d/:/usr/src/app/greenlock.d/"
-    command: >
-      bash -c 'npm start'
